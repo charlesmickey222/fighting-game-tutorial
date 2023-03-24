@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="js/utils.js"></script>
+  <script defer src="js/classes.js"></script>
+  <script defer src="app.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="scoreboard">
+      <div class="health-container" style="justify-content: flex-end;">
+        <div class="health-bar" id="player-health-bar"></div>
+        <div class="health-value" id="player-health"></div>
+      </div>
+      <div id="timer"> </div>
+      <div class="health-container">
+        <div class="health-bar" id="enemy-health-bar"></div>
+        <div class="health-value" id="enemy-health"></div>
+      </div>
+    </div>
+    <div id='message' style="position:absolute; color:white; display:none; align-items: center; justify-content: center; top:0;right:0;bottom:0;left:0;">
+      Tie
+    </div>
+    <canvas></canvas>
+  </div>
+</body>
+</html>

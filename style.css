@@ -1,0 +1,52 @@
+*{
+  box-sizing: border-box;
+}
+.container{
+  position: relative;
+  display:inline-block;
+
+}
+.scoreboard{
+  position:absolute;
+  display:flex;
+  width:100%;
+  align-items: center;
+  padding:20px;
+}
+.health-container{
+  position: relative;
+  display:flex;
+  height:30px;
+  width: 100%;
+}
+.health-bar{
+  background-color: grey;
+  height:30px;
+  width:100%;
+}
+#timer{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  width:100px;
+  height:100px;
+  flex-shrink: 0;
+}
+
+.health-value{
+  position: absolute;
+  background-color: green;
+  top:0;
+  right:0;
+  bottom:0;
+  width:100%
+}
+#enemy-health{
+  position: absolute;
+  background-color: green;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
