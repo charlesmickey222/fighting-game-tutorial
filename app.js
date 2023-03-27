@@ -63,6 +63,14 @@ const player = new Fighter({
     attack1:{
       imgSrc:'./img/samuraiMack/Attack1.png',
       framesMax:6
+    },
+    takeHit:{
+      imgSrc:'./img/samuraiMack/Take hit 2.png',
+      framesMax:4
+    },
+    death:{
+      imgSrc:'./img/samuraiMack/Death.png',
+      framesMax:6
     }
   },
   attackBox:{
@@ -111,6 +119,14 @@ const enemy =  new Fighter({
     attack1:{
       imgSrc:'./img/kenji/Attack1.png',
       framesMax:4
+    },
+    takeHit:{
+      imgSrc:'./img/kenji/Take hit.png',
+      framesMax:3
+    },
+    death:{
+      imgSrc:'./img/kenji/Death.png',
+      framesMax:7
     }
   },
   attackBox:{
@@ -189,7 +205,7 @@ function animate(){
   }
 
   if (rectangularCollision({rect1:player,rect2:enemy}) && player.isAttacking && player.framesCurrent === 4){
-    enemy.health -= 20
+    enemy.takeHit()
     document.querySelector('#enemy-health').style.width = `${enemy.health}%`;
     player.isAttacking = false
   }
@@ -198,10 +214,11 @@ function animate(){
   }
 
   if (rectangularCollision({rect1:enemy,rect2:player}) && enemy.isAttacking && enemy.framesCurrent === 2){
-    player.health -= 20
+    player.takeHit()
     document.querySelector('#player-health').style.width = `${player.health}%`;
     enemy.isAttacking = false
   }
+
   if(enemy.isAttacking && enemy.framesCurrent === enemy.sprites.attack1.framesMax){
     enemy.isAttacking = false;
   }
@@ -214,6 +231,7 @@ function animate(){
 animate()
 
 window.addEventListener('keydown',(evt)=>{
+  if(!player.dead){
   switch(evt.key){
     case 'd':
       keys.d.pressed = true;
@@ -232,6 +250,10 @@ window.addEventListener('keydown',(evt)=>{
     case 'c':
       player.attack()
       break
+    }
+  }
+  if(!enemy.dead){
+    switch(evt.key){
     case 'j':
       keys.j.pressed = true;
       enemy.lastKey = 'j'
@@ -247,7 +269,7 @@ window.addEventListener('keydown',(evt)=>{
     case 'n':
       enemy.attack()
       break
-  }
+  }}
 })
 
 addEventListener('keyup',(evt)=>{
